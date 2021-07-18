@@ -20,6 +20,6 @@ class HapiConfig {
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     fun hapiClient(): HapiClient {
-        return HapiClient("http://3.128.36.123:8080/hapi-fhir-jpaserver/fhir/")
+        return HapiClient("http://34.121.31.137:8080/fhir/")
     }
 }
