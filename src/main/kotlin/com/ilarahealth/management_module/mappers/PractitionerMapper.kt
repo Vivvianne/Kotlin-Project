@@ -1,11 +1,8 @@
 package com.ilarahealth.management_module.mappers
 
-import com.ilarahealth.management_module.dto.OrganizationDto
 import com.ilarahealth.management_module.dto.PractitionerDto
-import org.hl7.fhir.r4.model.Organization
 import org.hl7.fhir.r4.model.Practitioner
 import org.mapstruct.Mapper
-import org.mapstruct.Mapping
 
 
 /**
@@ -13,11 +10,9 @@ import org.mapstruct.Mapping
  * object. Look at how the OrganizationMapper works to try and understand how this one works. Your hints are that you only
  * need to use one @Mapping annotation, and that you'll need to use two mappers that are already defined in the project
  */
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = [HumanNameMapper::class])
 abstract class PractitionerMapper {
 
-    fun practitionerDtoToPractitioner(practitionerDto: PractitionerDto) : Practitioner
-    {
-        return Practitioner()
-    }
+    abstract fun practitionerDtoToPractitioner(practitionerDto: PractitionerDto) : Practitioner
+
 }

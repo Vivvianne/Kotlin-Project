@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
 class PractitionerService(val practitionerMapper: PractitionerMapper,
                           val hapiClient: HapiClient) {
 
-    // TODO - implement the create practitioner logic here
+
     fun createPractitioner(practitionerDto: PractitionerDto): String {
         val resource = practitionerMapper.practitionerDtoToPractitioner(practitionerDto)
         val methodOutcome = hapiClient.client.create()

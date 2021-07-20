@@ -17,11 +17,11 @@ class PractitionerController(val practitionerService: PractitionerService,
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createPractitioner(@RequestBody practitionerDto: PractitionerDto) : GenericSerializedResponse {
-        // TODO - Uncomment once you've finished implementing createPractitioner
-        // val practitioner = practitionerService.createPractitioner(practitionerDto)
+
+         val practitioner = practitionerService.createPractitioner(practitionerDto)
         return GenericSerializedResponse(
                 "OK",
-                "" //practitioner
+                 practitioner
         )
     }
 

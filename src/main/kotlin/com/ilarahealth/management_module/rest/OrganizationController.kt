@@ -20,5 +20,12 @@ class OrganizationController(val organizationService: OrganizationService) {
         )
     }
 
-    //TODO - Implement the search for organization endpoint here
+    @GetMapping("/{name}")
+    fun searchForOrganization(@PathVariable name:String) : GenericSerializedResponse {
+        var resultString = organizationService.searchForOrganization(name)
+        return GenericSerializedResponse(
+                "OK",
+                resultString
+        )
+    }
 }
