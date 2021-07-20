@@ -1,6 +1,11 @@
 package com.ilarahealth.management_module.mappers
 
+import com.ilarahealth.management_module.dto.OrganizationDto
+import com.ilarahealth.management_module.dto.PractitionerDto
+import org.hl7.fhir.r4.model.Organization
+import org.hl7.fhir.r4.model.Practitioner
 import org.mapstruct.Mapper
+import org.mapstruct.Mapping
 
 
 /**
@@ -10,4 +15,9 @@ import org.mapstruct.Mapper
  */
 @Mapper(componentModel = "spring")
 abstract class PractitionerMapper {
+
+    fun practitionerDtoToPractitioner(practitionerDto: PractitionerDto) : Practitioner
+    {
+        return Practitioner()
+    }
 }
