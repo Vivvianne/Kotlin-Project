@@ -13,8 +13,19 @@ class PractitionerService(val practitionerMapper: PractitionerMapper,
                           val hapiClient: HapiClient) {
 
     // TODO - implement the create practitioner logic here
-//    fun createPractitioner(practitionerDto: PractitionerDto): String {
-//    }
+    fun createPractitioner(practitionerDto: PractitionerDto): String {
+        val resource = practitionerMapper.practitionerDtoToPractitioner(practitionerDto)
+        val methodOutcome = hapiClient.client.create()
+                .resource(resource)
+                .prefer(PreferReturnEnum.REPRESENTATION)
+                .prettyPrint()
+                .encodedJson()
+                .execute()
+
+        return hapiClient.fhirContext.newJsonParser()
+                .setPrettyPrint(true)
+                .encodeResourceToString(methodOutcome.resource)
+    }
 
     fun searchForPractitioner(): String {
         val query = hapiClient.client
